@@ -67,6 +67,3 @@ export PATH="/Applications/:/opt/homebrew/opt/openssl@3/bin:$PATH"
 #rbenv
 eval "$(rbenv init - zsh)"
 
-#install-tools
-if false; then brew tap heroku/brew && brew install heroku; fi
-

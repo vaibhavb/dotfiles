@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "heroku/brew"
 
 brew "openssl"
 brew "python@3.9"
@@ -18,6 +19,7 @@ brew "tmux"
 brew "virtualenv"
 brew "wireshark"
 brew "yadm"
+brew "heroku"
 
 cask "docker"
 cask "visual-studio-code"
