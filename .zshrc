@@ -1,26 +1,36 @@
 #Author: Vaibhav Bhandari, Jan 2, 2022
-print "Loading ~/.zshrc - Vaibhav's Homescript"
+print "Loading ~/.zshrc - Vaibhav's homescript"
 
 ### Help
 help()
 {
  print "Commands:"
- print "help | h"
+ print "help | h | ?"
+ print "e -- edit homescript"
+ print "l -- load homescript"
+ print "me -- go to me directory"
  print "install-tools"
  print "which-projects"
+ print "list-projects"
 }
-alias h='help'
+alias '?'='help'
+alias 'h'='help'
 
 ### Software to Install 
-programs=(tmux iTerm2 gdrive adobe-illustrator burp-suite)
+programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite)
 install-tools() {
-for i in ${programs[@]}; do
+ for i in ${programs[@]}; do
   print $i
-done;
+ done;
 }
 
-
 ### BASE STRUCTURE 
+export PROJECTS=("github - vaibhavb, cyberdefenders" "gdrive" "adobe")
+list-projects(){
+ for i in ${PROJECTS[@]}; do
+   print $i
+ done
+}
 export CURR_DIR=~/Desktop/Current-Projects
 export THIS_FILE=~/.zshrc
 which-projects(){
@@ -52,4 +62,11 @@ if [ -f '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="/Applications/:/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+#rbenv
+eval "$(rbenv init - zsh)"
+
+#install-tools
+if false; then brew tap heroku/brew && brew install heroku; fi
+
