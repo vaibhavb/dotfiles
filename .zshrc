@@ -8,6 +8,7 @@ help()
  print "help | h | ?"
  print "e -- edit homescript"
  print "l -- load homescript"
+ print "c -- commit homescript"
  print "me -- go to me directory"
  print "install-tools"
  print "which-projects"
@@ -38,6 +39,7 @@ which-projects(){
 }
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
+alias c='yadm add $THIS_FILE; yadm commit; yadm push origin main'
 
 ####  DOMAINS 
 alias learn='cd $CURR_DIR/learn/'
