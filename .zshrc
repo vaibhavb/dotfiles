@@ -2,7 +2,7 @@
 print "Loading ~/.zshrc - Vaibhav's homescript"
 
 ### Help
-help()
+help() ##this help file
 {
  print "Commands:"
  print "help | h | ?"
@@ -10,16 +10,16 @@ help()
  print "l -- load homescript"
  print "c -- commit homescript"
  print "me -- go to me directory"
- print "install-tools"
- print "which-projects"
- print "list-projects"
+ grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}' 
 }
 alias '?'='help'
 alias 'h'='help'
 
+###
+
 ### Software to Install 
 programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite)
-install-tools() {
+install-tools(){ ##install listed programs on this computer
  for i in ${programs[@]}; do
   print $i
  done;
@@ -27,15 +27,22 @@ install-tools() {
 
 ### BASE STRUCTURE 
 export PROJECTS=("github - vaibhavb, cyberdefenders" "gdrive" "adobe")
-list-projects(){
+export CURR_PROJECT_DIR="$HOME/Desktop/Current-Projects/"
+list-projects(){ ##list all projects on this computer
  for i in ${PROJECTS[@]}; do
    print $i
- done
+ done;
+ for e in `ls $CURR_PROJECT_DIR`; do
+   print $e
+ done;
 }
 export CURR_DIR=~/Desktop/Current-Projects
 export THIS_FILE=~/.zshrc
-which-projects(){
+which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
+}
+cdc(){ ##special cd command
+  cd $CURR_DIR/$@
 }
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
@@ -69,3 +76,5 @@ export PATH="/Applications/:/opt/homebrew/opt/openssl@3/bin:$PATH"
 #rbenv
 eval "$(rbenv init - zsh)"
 
+### TOOLS
+export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler"
