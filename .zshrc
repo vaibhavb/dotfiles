@@ -8,7 +8,7 @@ help() ##this help file
  print "help | h | ?"
  print "e -- edit homescript"
  print "l -- load homescript"
- print "c -- commit homescript"
+ print "c -- commit homescript (uses yadm)"
  print "me -- go to me directory"
  grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}' 
 }
@@ -19,7 +19,7 @@ alias 'h'='help'
 
 ### Software to Install 
 programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite)
-install-tools(){ ##install listed programs on this computer
+install-tools(){ ##list programs to install on this computer
  for i in ${programs[@]}; do
   print $i
  done;
