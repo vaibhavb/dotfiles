@@ -18,7 +18,7 @@ alias 'h'='help'
 ###
 
 ### Software to Install 
-programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite)
+programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite sslscan)
 install-tools(){ ##list programs to install on this computer
  for i in ${programs[@]}; do
   print $i
@@ -42,7 +42,7 @@ which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
 }
 cdc(){ ##special cd command
-  cd $CURR_DIR/$@
+  cd $CURR_DIR/*$@*
 }
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
@@ -78,3 +78,6 @@ eval "$(rbenv init - zsh)"
 
 ### TOOLS
 export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler"
+
+### API KEYS
+export OPENAI_API_KEY=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
