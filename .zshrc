@@ -46,6 +46,7 @@ cdc(){ ##special cd command
 }
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
+# commit to yadm and push to github
 alias c='yadm add $THIS_FILE; yadm commit; yadm push origin main'
 
 ####  DOMAINS 
@@ -80,4 +81,4 @@ eval "$(rbenv init - zsh)"
 export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler"
 
 ### API KEYS
-export OPENAI_API_KEY=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
+export OPENAI_API_KEY=
