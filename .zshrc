@@ -78,7 +78,7 @@ export PATH="/Applications/:/opt/homebrew/opt/openssl@3/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
 ### TOOLS
-export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler"
+export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler:."
 
 ### API KEYS
 export OPENAI_API_KEY=
