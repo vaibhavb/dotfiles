@@ -18,7 +18,7 @@ alias 'h'='help'
 ###
 
 ### Software to Install 
-programs=(yadm mux iTerm2 gdrive adobe-illustrator burp-suite sslscan)
+programs=(yadm tmux iTerm2 gdrive adobe-illustrator burp-suite sslscan)
 install-tools(){ ##list programs to install on this computer
  for i in ${programs[@]}; do
   print $i
@@ -41,7 +41,7 @@ export THIS_FILE=~/.zshrc
 which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
 }
-cdc(){ ##special cd command
+cdc(){ ##special cd command e.g cdc tools
   cd $CURR_DIR/*$@*
 }
 alias l='source $THIS_FILE'
