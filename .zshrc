@@ -26,7 +26,7 @@ install-tools(){ ##list programs to install on this computer
 }
 
 ### BASE STRUCTURE 
-export PROJECTS=("github - vaibhavb, cyberdefenders" "gdrive" "adobe")
+export PROJECTS=("gcal" "github - vaibhavb, cyberdefenders" "gdrive" "adobe" "..this machine>>")
 export CURR_PROJECT_DIR="$HOME/Desktop/Current-Projects/"
 list-projects(){ ##list all projects on this computer
  for i in ${PROJECTS[@]}; do
