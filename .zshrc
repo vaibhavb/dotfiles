@@ -42,7 +42,13 @@ which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
 }
 cdc(){ ##special cd command e.g cdc tools
-  cd $CURR_DIR/*$@*
+  local dir
+  dir=$(find $CURR_DIR -type d -name "*$1*" -print -quit 2>/dev/null)
+  if [ -n "$dir" ]; then
+   cd "$dir"
+  else
+   echo "Not found"
+  fi
 }
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
