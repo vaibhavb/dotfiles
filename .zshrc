@@ -1,6 +1,16 @@
 #Author: Vaibhav Bhandari, Jan 2, 2022
 print "Loading ~/.zshrc - Vaibhav's homescript"
 
+### Program truths
+show-info(){ ##show all home-page logic, short-cut is t
+ cat <<< " 
+- for home script, backup in google drive
+- photos are in google photos
+- code is in github
+- password are in google passwords 
+"
+}
+
 ### Help
 help() ##this help file
 {
@@ -14,7 +24,7 @@ help() ##this help file
 }
 alias '?'='help'
 alias 'h'='help'
-
+alias 't'='show-info'
 ###
 
 ### Software to Install 
