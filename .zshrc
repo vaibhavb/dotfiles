@@ -60,6 +60,9 @@ cdc(){ ##special cd command e.g cdc tools
    echo "Not found"
   fi
 }
+get-date(){ ##get date in iso 8601 format
+  date -u +"%Y-%m-%d %H:%M:%S+00:00"
+}
 alias l='source $THIS_FILE'
 alias e='vi $THIS_FILE'
 # commit to yadm and push to github
@@ -101,3 +104,6 @@ workon() {
  echo $1
 }
 
+
+# Created by `pipx` on 2023-05-13 22:14:35
+export PATH="$PATH:/Users/vaibhavb/.local/bin"
