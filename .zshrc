@@ -1,5 +1,7 @@
 #Author: Vaibhav Bhandari, Jan 2, 2022
 print "Loading ~/.zshrc - Vaibhav's homescript"
+#pick visual studio code for editing
+export EDITOR='code'
 
 ### Program truths
 show-info(){ ##show all home-page logic, short-cut is t
@@ -8,7 +10,14 @@ show-info(){ ##show all home-page logic, short-cut is t
 - photos are in google photos
 - code is in github
 - password are in google passwords 
+- digital locker (identity documents, insurances, wills, etal.)
 "
+}
+dashboard(){##show dashbaord information, short-cut is d
+ cat <<< "
+  - what you read today?
+  - what your calendar is today?
+ "
 }
 
 ### Help
@@ -25,6 +34,7 @@ help() ##this help file
 alias '?'='help'
 alias 'h'='help'
 alias 't'='show-info'
+alias 'd'='dashboard'
 ###
 
 ### Software to Install 
@@ -64,7 +74,7 @@ get-date(){ ##get date in iso 8601 format
   date -u +"%Y-%m-%d %H:%M:%S+00:00"
 }
 alias l='source $THIS_FILE'
-alias e='vi $THIS_FILE'
+alias e='$EDITOR $THIS_FILE'
 # commit to yadm and push to github
 alias c='yadm add $THIS_FILE; yadm commit; yadm push origin main'
 
@@ -99,11 +109,4 @@ eval "$(rbenv init - zsh)"
 ### TOOLS
 export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler:."
 
-### WORKFLOW
-workon() {
- echo $1
-}
 
-
-# Created by `pipx` on 2023-05-13 22:14:35
-export PATH="$PATH:/Users/vaibhavb/.local/bin"
