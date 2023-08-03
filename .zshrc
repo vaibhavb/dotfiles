@@ -36,7 +36,7 @@ help() ##this help file
  print "help | h | ?"
  print "e -- edit homescript"
  print "l -- load homescript"
- print "c -- commit homescript (uses yadm)"
+ print "c -- commit homescript locally as well as to origin (uses yadm)"
  print "me -- go to me directory"
  print "cdcyber -- go to cyber defenders www directory"
  grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}' 
