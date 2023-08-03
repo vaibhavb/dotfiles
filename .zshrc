@@ -6,17 +6,26 @@ export EDITOR='code'
 ### Program truths
 show-info(){ ##show all home-page logic, short-cut is t
  cat <<< " 
+- digital locker (identity documents, insurances, wills, etal.)
 - for home script, backup in google drive
 - photos are in google photos
 - code is in github
 - password are in google passwords 
-- digital locker (identity documents, insurances, wills, etal.)
 "
 }
 dashboard(){##show dashbaord information, short-cut is d
  cat <<< "
+DAILY
   - what you read today?
   - what your calendar is today?
+  - how did the portfolio do today?
+
+WEEKLY
+  - what i read this week?
+  - what tasks i completed this week?
+
+MONTHLY
+  - cash flow statement?
  "
 }
 
@@ -29,8 +38,10 @@ help() ##this help file
  print "l -- load homescript"
  print "c -- commit homescript (uses yadm)"
  print "me -- go to me directory"
+ print "cdcyber -- go to cyber defenders www directory"
  grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}' 
 }
+alias 'cdcyber'='cd /Users/vaibhavb/Desktop/Current-Projects/cyberdefenders/www-homepage'
 alias '?'='help'
 alias 'h'='help'
 alias 't'='show-info'
@@ -56,19 +67,27 @@ list-projects(){ ##list all projects on this computer
    print $e
  done;
 }
-export CURR_DIR=~/Desktop/Current-Projects
+export CURR_DIR="$HOME/Desktop/Current-Projects"
+export CURR_DATA_DIR="$HOME/Desktop/data"
 export THIS_FILE=~/.zshrc
 which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
 }
-cdc(){ ##special cd command e.g cdc tools
+cdt() {
+  local base_dir=$1
   local dir
-  dir=$(find $CURR_DIR -type d -name "*$1*" -print -quit 2>/dev/null)
+  dir=$(find $base_dir -type d -name "*$2*" -print -quit 2>/dev/null)
   if [ -n "$dir" ]; then
    cd "$dir"
   else
    echo "Not found"
   fi
+}
+cdc(){ ##special cd command e.g cdc tools
+  cdt $CURR_DIR $1
+}
+cdd(){ ##special cd command for data e.g cdd tools
+  cdt $CURR_DATA_DIR $1
 }
 get-date(){ ##get date in iso 8601 format
   date -u +"%Y-%m-%d %H:%M:%S+00:00"
@@ -76,7 +95,7 @@ get-date(){ ##get date in iso 8601 format
 alias l='source $THIS_FILE'
 alias e='$EDITOR $THIS_FILE'
 # commit to yadm and push to github
-alias c='yadm add $THIS_FILE; yadm commit; yadm push origin main'
+alias c='yadm add $THIS_FILE; yadm commit -m $1; yadm push origin main'
 
 ####  DOMAINS 
 alias learn='cd $CURR_DIR/learn/'
@@ -110,3 +129,8 @@ eval "$(rbenv init - zsh)"
 export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler:."
 
 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# set python work environment
+export PYTHONDONTWRITEBYTECODE=1 
