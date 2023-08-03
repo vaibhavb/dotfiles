@@ -95,7 +95,7 @@ get-date(){ ##get date in iso 8601 format
 alias l='source $THIS_FILE'
 alias e='$EDITOR $THIS_FILE'
 # commit to yadm and push to github
-alias c='yadm add $THIS_FILE; yadm commit -m $1; yadm push origin main'
+alias c='yadm add $THIS_FILE; EDITOR="vi" yadm commit; yadm push origin main'
 
 ####  DOMAINS 
 alias learn='cd $CURR_DIR/learn/'
@@ -127,8 +127,6 @@ eval "$(rbenv init - zsh)"
 
 ### TOOLS
 export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler:."
-
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
