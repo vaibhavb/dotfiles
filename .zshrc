@@ -1,5 +1,6 @@
 #Author: Vaibhav Bhandari, Jan 2, 2022
 print "Loading ~/.zshrc - Vaibhav's homescript"
+
 #pick visual studio code for editing
 export EDITOR='code'
 
@@ -132,3 +133,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # set python work environment
 export PYTHONDONTWRITEBYTECODE=1 
+
+
+show-today() {
+ cat <<< " 
+- Today is `get-date`
+- Calendar items
+- Reminders . 
+"
+}
+# show it!
+show-today
