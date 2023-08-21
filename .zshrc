@@ -1,5 +1,5 @@
 #Author: Vaibhav Bhandari, Jan 2, 2022
-print "Loading ~/.zshrc - Vaibhav's homescript"
+echo "Loading ~/.zshrc - Vaibhav's homescript"
 
 #pick visual studio code for editing
 export EDITOR='code'
@@ -33,14 +33,14 @@ MONTHLY
 ### Help
 help() ##this help file
 {
- print "Commands:"
- print "help | h | ?"
- print "e -- edit homescript"
- print "l -- load homescript"
- print "c -- commit homescript locally as well as to origin (uses yadm)"
- print "me -- go to me directory"
- print "cdcyber -- go to cyber defenders www directory"
- grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}' 
+ echo "Commands:"
+ echo "help | h | ?"
+ echo "e -- edit homescript"
+ echo "l -- load homescript"
+ echo "c -- commit homescript locally as well as to origin (uses yadm)"
+ echo "me -- go to me directory"
+ echo "cdcyber -- go to cyber defenders www directory"
+ grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {echo $1 " -- " $2}' 
 }
 alias 'cdcyber'='cd /Users/vaibhavb/Desktop/Current-Projects/cyberdefenders/www-homepage'
 alias '?'='help'
@@ -53,7 +53,7 @@ alias 'd'='dashboard'
 programs=(yadm tmux iTerm2 gdrive adobe-illustrator burp-suite sslscan)
 install-tools(){ ##list programs to install on this computer
  for i in ${programs[@]}; do
-  print $i
+  echo $i
  done;
 }
 
@@ -62,10 +62,10 @@ export PROJECTS=("gcal" "github - vaibhavb, cyberdefenders" "gdrive" "adobe" "..
 export CURR_PROJECT_DIR="$HOME/Desktop/Current-Projects/"
 list-projects(){ ##list all projects on this computer
  for i in ${PROJECTS[@]}; do
-   print $i
+   echo $i
  done;
  for e in `ls $CURR_PROJECT_DIR`; do
-   print $e
+   echo $e
  done;
 }
 export CURR_DIR="$HOME/Desktop/Current-Projects"
@@ -144,3 +144,23 @@ show-today() {
 }
 # show it!
 show-today
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/vaibhavb/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/vaibhavb/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/vaibhavb/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/vaibhavb/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/vaibhavb/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/vaibhavb/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
