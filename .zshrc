@@ -2,7 +2,7 @@
 echo "Loading ~/.zshrc - Vaibhav's homescript"
 
 #pick visual studio code for editing
-export EDITOR='code'
+export EDITOR='vim'
 
 ### Program truths
 show-info(){ ##show all home-page logic, short-cut is t
@@ -69,7 +69,7 @@ list-projects(){ ##list all projects on this computer
  done;
 }
 export CURR_DIR="$HOME/Desktop/Current-Projects"
-export CURR_DATA_DIR="$HOME/Desktop/data"
+export CURR_DATA_DIR="$HOME/Documents/Data"
 export THIS_FILE=~/.zshrc
 which-projects(){ ##current projects use it before cdc
   ls -l $CURR_DIR
@@ -115,23 +115,12 @@ alias cdli='cd $CURR_DIR/art/listeninn'
 alias cdttt='cd $CURR_DIR/learn/javascript/tictactoe'
 
 
-#### Macbookpro Specific
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vaibhavb/Desktop/Current-Projects/external-code/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH="/Applications/:/opt/homebrew/opt/openssl@3/bin:$PATH"
-
-#rbenv
-eval "$(rbenv init - zsh)"
-
 ### TOOLS
-export PATH="$PATH:/User/vaibhavb/Desktop/Current-Projects/04-2022-koboldmetals/prowler:."
+export PATH="$PATH:/User/vaibhavb/Documents/Tools/"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # set python work environment
+
 export PYTHONDONTWRITEBYTECODE=1 
 
 
