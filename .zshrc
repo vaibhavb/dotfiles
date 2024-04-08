@@ -42,7 +42,7 @@ help() ##this help file
  echo "cdcyber -- go to cyber defenders www directory"
  grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {echo $1 " -- " $2}' 
 }
-alias 'cdcyber'='cd /Users/vaibhavb/Desktop/Current-Projects/cyberdefenders/www-homepage'
+alias 'cdcyber'='cd /Users/vaibhavb/Documents/GitHub/cyberdefenders/www-homepage'
 alias '?'='help'
 alias 'h'='help'
 alias 't'='show-info'
@@ -68,7 +68,7 @@ list-projects(){ ##list all projects on this computer
    echo $e
  done;
 }
-export CURR_DIR="$HOME/Desktop/Current-Projects"
+export CURR_DIR="$HOME/Documents/GitHub/"
 export CURR_DATA_DIR="$HOME/Documents/Data"
 export THIS_FILE=~/.zshrc
 which-projects(){ ##current projects use it before cdc
@@ -91,7 +91,7 @@ cdd(){ ##special cd command for data e.g cdd tools
   cdt $CURR_DATA_DIR $1
 }
 get-date(){ ##get date in iso 8601 format
-  date -u +"%Y-%m-%d %H:%M:%S+00:00"
+  date -u +"%Y-%m-%dT%H:%M:%SZ"
 }
 alias l='source $THIS_FILE'
 alias e='$EDITOR $THIS_FILE'
@@ -116,11 +116,11 @@ alias cdttt='cd $CURR_DIR/learn/javascript/tictactoe'
 
 
 ### TOOLS
-export PATH="$PATH:/User/vaibhavb/Documents/Tools/"
+export PATH="$PATH:/Users/vaibhavb/Documents/Tools/"
 
 
 # set python work environment
-
+export PATH="$PATH:/Users/vaibhavb/Library/Python/3.9/bin"
 export PYTHONDONTWRITEBYTECODE=1 
 
 
@@ -153,3 +153,14 @@ if [ -f "/Users/vaibhavb/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
