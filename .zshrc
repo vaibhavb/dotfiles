@@ -120,7 +120,7 @@ export PATH="$PATH:/Users/vaibhavb/Documents/Tools/"
 
 
 # set python work environment
-export PATH="$PATH:/Users/vaibhavb/Library/Python/3.9/bin"
+export PATH="/Users/vaibhavb/Library/Python/3.9/bin:$PATH"
 export PYTHONDONTWRITEBYTECODE=1 
 
 
@@ -164,3 +164,26 @@ if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `pipx` on 2024-04-09 21:05:01
+export PATH="$PATH:/Users/vaibhavb/.local/bin"
+
+# bun completions
+[ -s "/Users/vaibhavb/.bun/_bun" ] && source "/Users/vaibhavb/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+alias nvim='NVIM_APPNAME="nvim-kickstart" nvim'
+export PATH=$HOME/flutter/development/flutter/bin:$PATH
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH
+eval "$(starship init zsh)"
+alias z="zellij"
+
+#vim in zsh
+bindkey -v
+# git commands
+alias g='git'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
