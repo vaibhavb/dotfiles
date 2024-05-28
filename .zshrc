@@ -187,3 +187,4 @@ bindkey -v
 alias g='git'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
+export PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
