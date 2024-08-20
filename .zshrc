@@ -2,7 +2,7 @@
 echo "Loading ~/.zshrc - Vaibhav's homescript"
 
 #pick visual studio code for editing
-export EDITOR='vim'
+export EDITOR='nvim'
 
 ### Program truths
 show-info(){ ##show all home-page logic, short-cut is t
@@ -174,7 +174,6 @@ export PATH="$PATH:/Users/vaibhavb/.local/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-alias nvim='NVIM_APPNAME="nvim-kickstart" nvim'
 export PATH=$HOME/flutter/development/flutter/bin:$PATH
 PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH
@@ -187,4 +186,5 @@ bindkey -v
 alias g='git'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
+alias n='nvim'
 export PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
