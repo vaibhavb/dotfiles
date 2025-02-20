@@ -14,7 +14,7 @@ show-info(){ ##show all home-page logic, short-cut is t
 - password are in google passwords 
 "
 }
-dashboard(){##show dashbaord information, short-cut is d
+dashboard(){ ##show dashbaord information, short-cut is d
  cat <<< "
 DAILY
   - what you read today?
@@ -40,8 +40,15 @@ help() ##this help file
  echo "c -- commit homescript locally as well as to origin (uses yadm)"
  echo "me -- go to me directory"
  echo "cdcyber -- go to cyber defenders www directory"
- grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$$' ~/.zshrc | sort | awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {echo $1 " -- " $2}' 
+ list-fn-docs
 }
+
+list-fn-docs() { ## List all function documentation from ~/.zshrc
+    grep -E '^[a-zA-Z_-]+\(\)\{.*?##.*$' ~/.zshrc | \
+        sort | \
+        awk 'BEGIN {FS="[\(\) ]*{[ ]*##"} {print $1 " -- " $2}'
+}
+
 alias 'cdcyber'='cd /Users/vaibhavb/Documents/GitHub/cyberdefenders/www-homepage'
 alias '?'='help'
 alias 'h'='help'
@@ -188,3 +195,20 @@ alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias n='nvim'
 export PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
+export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias cdo='cd /Users/vaibhavb/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Personal-Data'
+alias cdmd='cd /Users/vaibhavb/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/'
+
+get-md(){ ## get markdown from a URL
+    local url=$1
+    if [ -z "$url" ]; then
+        echo "Usage: get-md <url>"
+        return 1
+    fi
+    curl "https://md.dhr.wtf/?url=$url"
+}
