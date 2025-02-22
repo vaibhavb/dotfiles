@@ -125,12 +125,6 @@ alias cdttt='cd $CURR_DIR/learn/javascript/tictactoe'
 ### TOOLS
 export PATH="$PATH:/Users/vaibhavb/Documents/Tools/"
 
-
-# set python work environment
-export PATH="/Users/vaibhavb/Library/Python/3.9/bin:$PATH"
-export PYTHONDONTWRITEBYTECODE=1 
-
-
 show-today() {
  cat <<< " 
 - Today is `get-date`
@@ -141,49 +135,14 @@ show-today() {
 # show it!
 show-today
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/vaibhavb/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/vaibhavb/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/vaibhavb/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/vaibhavb/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/vaibhavb/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/vaibhavb/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Created by `pipx` on 2024-04-09 21:05:01
-export PATH="$PATH:/Users/vaibhavb/.local/bin"
-
-# bun completions
-[ -s "/Users/vaibhavb/.bun/_bun" ] && source "/Users/vaibhavb/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH=$HOME/flutter/development/flutter/bin:$PATH
-PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-export PATH
 eval "$(starship init zsh)"
 alias z="zellij"
 
@@ -195,7 +154,8 @@ alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias n='nvim'
 export PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
+export PYTHONDONTWRITEBYTECODE=1
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -212,3 +172,21 @@ get-md(){ ## get markdown from a URL
     fi
     curl "https://md.dhr.wtf/?url=$url"
 }
+export PATH=$HOME/.venvs/gensh/bin:$PATH
+
+_gensh_complete() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    '-p[Select a pattern]: :->patterns'
+
+  case $state in
+    patterns)
+      local -a patterns
+      patterns=( $(gensh -c list_patterns | awk '{print $2}' | awk -F'-' '{print $1}' | tr -d ':') )
+      _describe 'patterns' patterns
+    ;;
+  esac
+}
+compdef _gensh_complete gensh
