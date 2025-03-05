@@ -14,20 +14,12 @@ show-info(){ ##show all home-page logic, short-cut is t
 - password are in google passwords 
 "
 }
+
+OBS_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal-Data"
 dashboard(){ ##show dashbaord information, short-cut is d
- cat <<< "
-DAILY
-  - what you read today?
-  - what your calendar is today?
-  - how did the portfolio do today?
-
-WEEKLY
-  - what i read this week?
-  - what tasks i completed this week?
-
-MONTHLY
-  - cash flow statement?
- "
+  local todayfileDir="$OBS_DIR/data/content/daily"
+  local todayfile=`date "+%Y-%m-%d"`".md"
+  cat "$todayfileDir/$todayfile"
 }
 
 ### Help
@@ -190,3 +182,14 @@ _gensh_complete() {
   esac
 }
 compdef _gensh_complete gensh
+
+if [[ -z "$ZELLIJ" ]]; then
+  exec zellij
+fi
+
+alias copy_patterns='cp -r ~/.config/gensh/patterns/ ~/.config/gensh/fabric/patterns/'
+
+add-pattern(){ ## add the pattern to gensh repo
+ local dir="$HOME/.config/gensh/patterns/$1"
+ mkdir -p "$dir" && nvim "$dir/user.md"
+}
