@@ -7,6 +7,7 @@ export EDITOR='nvim'
 ### Program truths
 show-info(){ ##show all home-page logic, short-cut is t
  cat <<< " 
+- day file is $DAY_FILE
 - digital locker (identity documents, insurances, wills, etal.)
 - for home script, backup in google drive
 - photos are in google photos
@@ -16,10 +17,12 @@ show-info(){ ##show all home-page logic, short-cut is t
 }
 
 OBS_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal-Data"
+local todayfileDir="$OBS_DIR/data/content/daily"
+local todayfile=`date "+%Y-%m-%d"`".md"
+DAY_FILE="$todayfileDir/$todayfile"
+
 dashboard(){ ##show dashbaord information, short-cut is d
-  local todayfileDir="$OBS_DIR/data/content/daily"
-  local todayfile=`date "+%Y-%m-%d"`".md"
-  cat "$todayfileDir/$todayfile"
+  cat $DAY_FILE
 }
 
 ### Help
@@ -120,8 +123,7 @@ export PATH="$PATH:/Users/vaibhavb/Documents/Tools/"
 show-today() {
  cat <<< " 
 - Today is `get-date`
-- Calendar items
-- Reminders . 
+- Day file is $DAY_FILE
 "
 }
 # show it!
