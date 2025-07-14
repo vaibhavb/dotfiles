@@ -36,6 +36,9 @@ curl -sS https://starship.rs/install.sh | sh
 # Install Zellij terminal multiplexer
 cargo install zellij
 
+# Setup Neovim plugins (NvChad will auto-install on first run)
+nvim --headless "+Lazy! sync" +qa
+
 # Setup development environments (see Development Environment section)
 ```
 
@@ -64,13 +67,27 @@ Main shell configuration with:
 - AI workflow integration
 - Development environment setup
 
-### `Brewfile`
-148 packages organized by category:
-- **Development Tools**: git, neovim, docker, kubernetes
-- **Languages**: python, node, go, rust
-- **Security**: nmap, wireshark, burp-suite
-- **Productivity**: obsidian, notion, raycast
-- **Fonts**: 65+ Nerd Fonts for terminal customization
+### `.config/` Directory
+Essential application configurations:
+- **`starship.toml`** - Custom prompt configuration with git status and language detection
+- **`alacritty/alacritty.toml`** - Terminal emulator settings and key bindings
+- **`zellij/config.kdl`** - Terminal multiplexer configuration and themes
+- **`nvim/`** - Complete NvChad Neovim setup with LSP, plugins, and custom mappings
+
+### Editor Configurations
+- **`.vimrc`** - Classic Vim configuration for fallback editing
+- **`.config/nvim/init.lua`** - Modern Neovim entry point with NvChad framework
+- **`.config/nvim/lua/`** - Lua configurations for plugins, LSP, formatting, and mappings
+- **`.config/nvim/lazy-lock.json`** - Plugin lockfile for reproducible installations
+
+### Development Tools
+- **`.gitconfig`** - Git global configuration with aliases and user settings
+- **`Brewfile`** - 148 packages organized by category:
+  - **Development Tools**: git, neovim, docker, kubernetes
+  - **Languages**: python, node, go, rust
+  - **Security**: nmap, wireshark, burp-suite
+  - **Productivity**: obsidian, notion, raycast
+  - **Fonts**: 65+ Nerd Fonts for terminal customization
 
 ## 🔧 Custom Functions & Aliases
 
