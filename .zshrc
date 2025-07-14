@@ -92,6 +92,9 @@ cdc(){ ##special cd command e.g cdc tools
 cdd(){ ##special cd command for data e.g cdd tools
   cdt $CURR_DATA_DIR $1
 }
+cdo(){ ##special cd command for OBSIDIAN directory
+  cd "$OBS_DIR"
+}
 get-date(){ ##get date in iso 8601 format
   date -u +"%Y-%m-%dT%H:%M:%SZ"
 }
@@ -116,7 +119,6 @@ alias cdnfx-vuln='cd $CURR_DIR/nfx/vuln-project'
 alias cdli='cd $CURR_DIR/art/listeninn'
 alias cdttt='cd $CURR_DIR/learn/javascript/tictactoe'
 
-
 ### TOOLS
 export PATH="$PATH:/Users/vaibhavb/Documents/Tools/"
 
@@ -128,9 +130,6 @@ show-today() {
 }
 # show it!
 show-today
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vaibhavb/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -154,9 +153,6 @@ export PYTHONDONTWRITEBYTECODE=1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-alias cdo='cd /Users/vaibhavb/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Personal-Data'
-alias cdmd='cd /Users/vaibhavb/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/'
 
 get-md(){ ## get markdown from a URL
     local url=$1
@@ -189,9 +185,17 @@ if [[ -z "$ZELLIJ" ]]; then
   exec zellij
 fi
 
-alias copy_patterns='cp -r ~/.config/gensh/patterns/ ~/.config/gensh/fabric/patterns/'
+copy-patterns(){ ## copy gensh patterns for use
+ `cp -r $HOME/.config/gensh/patterns/ $HOME/.config/gensh/fabric/patterns/`
+}
 
 add-pattern(){ ## add the pattern to gensh repo
  local dir="$HOME/.config/gensh/patterns/$1"
  mkdir -p "$dir" && nvim "$dir/user.md"
 }
+
+source ~/Documents/GitHub/gensh/.env
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$HOME/.rvm/gems/ruby-3.3.0/bin:$HOME/.rvm/bin:$PATH"
+source "$HOME/.rvm/scripts/rvm"
+rvm use ruby-3.3.0
