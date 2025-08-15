@@ -16,7 +16,7 @@ show-info(){ ##show all home-page logic, short-cut is t
 "
 }
 
-OBS_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal-Data"
+OBS_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal-Data/data"
 local todayfileDir="$OBS_DIR/data/content/daily"
 local todayfile=`date "+%Y-%m-%d"`".md"
 DAY_FILE="$todayfileDir/$todayfile"
@@ -199,3 +199,10 @@ source ~/Documents/GitHub/gensh/.env
 export PATH="$HOME/.rvm/gems/ruby-3.3.0/bin:$HOME/.rvm/bin:$PATH"
 source "$HOME/.rvm/scripts/rvm"
 rvm use ruby-3.3.0
+
+# opencode
+export PATH=/Users/vaibhavb/.opencode/bin:$PATH
+export GDRIVE='/Users/vaibhavb/Google Drive/My Drive'
+alias cdg='cd $GDRIVE'
+alias cdcu='cd $HOME/Documents/Clients/'
+
